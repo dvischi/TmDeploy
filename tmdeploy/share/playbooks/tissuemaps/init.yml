@@ -23,6 +23,7 @@
   tasks:
     - name: Create directories defined in tmpfiles.d
       command: systemd-tmpfiles --create
+      ignore_errors: yes
     - name: Restart ssh daemon service
       systemd:
         name: "{{ 'ssh' if ansible_os_family == 'Debian' else 'sshd' }}"
