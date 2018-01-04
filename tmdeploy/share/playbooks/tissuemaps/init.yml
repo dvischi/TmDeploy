@@ -22,7 +22,7 @@
   hosts: all
   tasks:
     - name: Create directories defined in tmpfiles.d
-      command: systemd-tmpfiles --create
+      command: systemd-tmpfiles --create || true
     - name: Restart ssh daemon service
       systemd:
         name: "{{ 'ssh' if ansible_os_family == 'Debian' else 'sshd' }}"
